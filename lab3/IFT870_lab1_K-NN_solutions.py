@@ -37,7 +37,7 @@ def knn(x, data, p=2):
     return targets[np.argmin(dist)]
 
 ######## Conclusion #########
-iris = np.loadtxt('iris.txt')
+iris = np.loadtxt('C:\\Users\\User\\Desktop\\Sherbrooke\\lab3\\iris.txt')
 
 predictions = np.zeros(iris.shape[0])
 for i in range(iris.shape[0]):
