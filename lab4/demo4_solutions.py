@@ -93,17 +93,17 @@ class NeighborhoodClassifier:
 
             # Go through the training set to find the neighbors of the current point (ex)
             # You will distinguish between Parzen and KNN here
-            ind_neighbors = []
+            ind_neighbors = [] # liste pour les kppv du datapoint 'ex'
             if self.parzen:
                 radius = self.radius
                 while len(ind_neighbors) == 0:
-                    ind_neighbors = np.array([j for j in range(len(distances)) if distances[j] < radius])
+                    ind_neighbors = np.array([j for j in range(len(distances)) if distances[j] < radius]) # on garde seulement les distances (distances[j]) qui sont < r
                     radius *= 2
             else:
                 ind_neighbors = np.argsort(distances)[:self.k]
 
             # Calculate the number of neighbors belonging to each class and write them in counts[i,:]
-            cl_neighbors = list(self.train_labels[ind_neighbors] - 1)
+            cl_neighbors = list(self.train_labels[ind_neighbors] - 1)#nicely done lmao
             for j in range(min(len(cl_neighbors) if self.parzen else self.k, self.train_inputs.shape[0])):
                 counts[i, cl_neighbors[j]] += 1
 
